@@ -2,6 +2,7 @@
 **Description: This tutorial shows how to send data and parse results between the local model (clone) and the remote model (victim).**
 
 ## 👊 Example
+**⚠Victim's response_type should be set to 'hard-label' or 'soft-label'.**
 ```python
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(0)
@@ -14,11 +15,11 @@ batch_image = (batch_image - batch_image.min()) / (batch_image.max() - batch_ima
 victim = VictimCaller(
     device=device,
     victim_model_name='r18.military-20',
-    response_type='hard-label',
+    response_type='xxx-label',
     remote_api='http://127.0.0.1:5500/api/victim-classifier',
 )
 ```
-### hard-label
+### response_type='hard-label'
 ```python
 print(result)
 # ['r18.military-20', 'hard-label', tensor([18, 14, 18, 18, 18, 18, 14, 14], device='cuda:0')]
@@ -32,7 +33,7 @@ print(target_part)
 print(type(target_part))
 # <class 'torch.Tensor'>
 ```
-### soft-label
+### response_type='soft-label'
 ```python
 print(result)
 # ['r18.military-20', 'hard-label', tensor([18, 14, 18, 18, 18, 18, 14, 14], device='cuda:0')]
