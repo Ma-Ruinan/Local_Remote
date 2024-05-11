@@ -17,7 +17,23 @@ victim = VictimCaller(
     response_type='hard-label',
     remote_api='http://127.0.0.1:5500/api/victim-classifier',
 )
-result = victim(batch_image)
+```
+### hard-label
+```python
+print(result)
+# ['r18.military-20', 'hard-label', tensor([18, 14, 18, 18, 18, 18, 14, 14], device='cuda:0')]
+print(type(result))
+# <class 'str'>
+target_part = re.search(r'\[(\d+\s*,?\s*)+\]', result).group(0)
+target_part = [int(num) for num in target_part.strip('[]').split(',')]
+target_part = torch.tensor(target_part)
+print(target_part)
+# tensor([18, 14, 18, 18, 18, 18, 14, 14])
+print(type(target_part))
+# <class 'torch.Tensor'>
+```
+### soft-label
+```python
 print(result)
 # ['r18.military-20', 'hard-label', tensor([18, 14, 18, 18, 18, 18, 14, 14], device='cuda:0')]
 print(type(result))
