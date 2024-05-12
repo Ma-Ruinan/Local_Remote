@@ -1,7 +1,8 @@
 # Local_Remote
 **Description: This tutorial shows how to send data and parse results between the local model (clone) and the remote model (victim).**
 
-## 👊 Example
+# 👊 Example
+## ☝ From local to remote
 ⚠ **Victim's response_type should be set to hard-label or soft-label.** ⚠
 ```python
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -19,6 +20,7 @@ victim = VictimCaller(
     remote_api='http://127.0.0.1:5500/api/victim-classifier',
 )
 ```
+## ✌ From remote to local
 ### response_type='hard-label'
 ```python
 print(result)
@@ -47,7 +49,3 @@ target_part = torch.tensor(target_part)
 print(type(target_part), target_part.size())
  # <class 'torch.Tensor'> torch.Size([2, 20])
 ```
-
-## ☝ From local to remote
-
-## ✌ From remote to local
