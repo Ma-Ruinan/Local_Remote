@@ -6,8 +6,8 @@
 ```python
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(0)
-batch_size = 8
-image_size = 224
+batch_size = xxx
+image_size = xxx
 batch_image = torch.randn([batch_size, 3, image_size, image_size])
 # Normalize batch_image to [0, 1], equal to transforms.ToTensor().
 batch_image = (batch_image - batch_image.min()) / (batch_image.max() - batch_image.min())
